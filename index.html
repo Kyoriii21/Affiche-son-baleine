@@ -29,7 +29,7 @@
                             700: '#075985',
                             800: '#0c4a6e',
                             900: '#0a324d',
-                            950: '#03192a',
+                            950: '#041d2f',
                         }
                     }
                 }
@@ -53,21 +53,19 @@
         }
 
         .glass-card {
-            background: rgba(7, 39, 64, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: rgba(10, 50, 77, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(56, 189, 248, 0.22);
         }
 
         .ocean-gradient {
-            background: linear-gradient(135deg, #031d33 0%, #075985 50%, #0284c7 100%);
+            background: linear-gradient(135deg, #041d2f 0%, #075985 50%, #0284c7 100%);
         }
 
-        /* Cadre image pour tout afficher sans rogner */
-        .image-frame-full {
-            background: #010f1c;
-            border: 1.5px solid #38bdf8;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        /* Cadre propre pour afficher l'image en entier sans rognage */
+        .full-img-box {
+            background: #021322;
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
         /* Optimization pour l'impression A4 Paysage */
@@ -85,21 +83,20 @@
             .a4-page {
                 width: 297mm !important;
                 height: 210mm !important;
-                padding: 6mm 8mm !important;
+                padding: 5mm 6mm !important;
                 box-shadow: none !important;
                 background-color: #ffffff !important;
             }
             .glass-card, .bg-ocean-950, .ocean-gradient {
                 background: #ffffff !important;
                 color: #0f172a !important;
-                border: 1px solid #cbd5e1 !important;
+                border: 1px solid #94a3b8 !important;
                 box-shadow: none !important;
                 backdrop-filter: none !important;
             }
-            .image-frame-full {
-                border: 1px solid #0284c7 !important;
-                box-shadow: none !important;
+            .full-img-box {
                 background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
             }
             h1, h2, h3, h4, strong, .text-white, .text-cyan-100, .text-cyan-200, .text-cyan-300, .text-cyan-400 {
                 color: #0369a1 !important;
@@ -114,7 +111,7 @@
             .grid {
                 display: grid !important;
                 grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                gap: 0.5rem !important;
+                gap: 0.4rem !important;
             }
         }
     </style>
@@ -129,7 +126,7 @@
             </div>
             <div>
                 <h1 class="font-bold text-sm text-white leading-tight">Affiche Scientifique • Format A4 Paysage (3 Colonnes)</h1>
-                <p class="text-[10px] text-cyan-400">Physique-Chimie</p>
+                <p class="text-[10px] text-cyan-400">Physique-Chimie • Lycée</p>
             </div>
         </div>
         
@@ -140,13 +137,13 @@
         </div>
     </header>
 
-    <!-- Feuille de travail A4 Paysage (297mm x 210mm) -->
+    <!-- Feuille de travail A4 Paysage -->
     <div class="a4-page bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl p-3 flex flex-col justify-between">
 
         <!-- En-tête de l'Affiche Paysage -->
-        <section class="ocean-gradient text-white p-2.5 rounded-2xl border border-sky-400/30 flex items-center justify-between gap-3 shadow-lg">
+        <section class="ocean-gradient text-white p-2.5 rounded-2xl border border-ocean-800 flex items-center justify-between gap-3">
             <div>
-                <span class="text-[9px] uppercase tracking-widest font-extrabold text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-3 py-0.5 rounded-full inline-block mb-0.5 shadow-sm">
+                <span class="text-[9px] uppercase tracking-widest font-extrabold text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-3 py-0.5 rounded-full inline-block mb-1 shadow-sm">
                     Projet Scientifique Physique-Chimie
                 </span>
                 <h1 class="text-base font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-cyan-300 leading-tight">
@@ -158,16 +155,16 @@
             </div>
 
             <!-- Synthèse des données clés en bande horizontale -->
-            <div class="flex gap-1.5 text-[10px]">
-                <div class="bg-slate-900/90 border border-cyan-500/40 px-2.5 py-1 rounded-xl text-center shadow">
+            <div class="flex gap-2 text-[10px]">
+                <div class="bg-ocean-950/80 border border-cyan-500/30 px-2 py-1 rounded-xl text-center">
                     <span class="block text-[8px] text-cyan-300 font-bold uppercase">Eau de mer</span>
                     <strong class="text-white text-xs">≈ 1 500 m/s</strong>
                 </div>
-                <div class="bg-slate-900/90 border border-yellow-500/40 px-2.5 py-1 rounded-xl text-center shadow">
+                <div class="bg-ocean-950/80 border border-yellow-500/30 px-2 py-1 rounded-xl text-center">
                     <span class="block text-[8px] text-yellow-300 font-bold uppercase">Rapport Air/Eau</span>
-                    <strong class="text-yellow-300 text-xs">≈ 4,4× plus vite</strong>
+                    <strong class="text-white text-xs">≈ 4,4× plus vite</strong>
                 </div>
-                <div class="bg-slate-900/90 border border-slate-500/40 px-2.5 py-1 rounded-xl text-center shadow">
+                <div class="bg-ocean-950/80 border border-slate-500/30 px-2 py-1 rounded-xl text-center">
                     <span class="block text-[8px] text-slate-300 font-bold uppercase">Air (20°C)</span>
                     <strong class="text-white text-xs">≈ 340 m/s</strong>
                 </div>
@@ -184,55 +181,52 @@
                 <div class="glass-card rounded-2xl p-2.5 space-y-1.5 text-[10px] flex-1">
                     <div class="flex items-center justify-between border-b border-ocean-800 pb-1">
                         <div class="flex items-center gap-1.5">
-                            <span class="w-4 h-4 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-[10px] border border-cyan-400/30">1</span>
+                            <span class="w-4 h-4 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-[10px]">1</span>
                             <h2 class="font-bold text-xs text-white">Qu'est-ce que le son ?</h2>
                         </div>
                     </div>
 
-                    <p class="text-slate-200 leading-tight">
+                    <p class="text-slate-200 leading-snug">
                         Le son est une <strong class="text-cyan-300">onde mécanique progressive</strong>. Il correspond à la propagation de vibrations des particules du milieu sans transport global de matière.
                     </p>
 
-                    <div class="bg-red-950/50 border-l-4 border-red-500 p-1.5 rounded-r-xl text-[9px] text-red-200">
+                    <div class="bg-red-950/40 border-l-4 border-red-500 p-1.5 rounded-r-xl text-[9px] text-red-200">
                         <i class="fa-solid fa-circle-exclamation mr-1 text-red-400"></i>
-                        <strong>Propriété essentielle :</strong> Nécessite un milieu matériel. Il ne se propage <strong>pas dans le vide</strong>.
+                        <strong>Propriété :</strong> Besoin d'un milieu matériel. Il ne se propage <strong>pas dans le vide</strong>.
                     </div>
 
                     <div class="space-y-1 text-[9px]">
-                        <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <strong class="text-cyan-300">La Fréquence (f) :</strong> Mesurée en hertz (Hz), nombre de vibrations par seconde. (Grave vs Aigu).
+                        <div class="p-1.5 bg-ocean-950/80 rounded-xl border border-ocean-800">
+                            <strong class="text-cyan-300">Fréquence (f) :</strong> Hertz (Hz). 
+                            <span class="text-slate-300 block">Faible = Grave | Élevée = Aigu</span>
                         </div>
-
-                        <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <strong class="text-cyan-300">L'Amplitude :</strong> Liée à l'intensité de la vibration et au niveau sonore (dB).
+                        <div class="p-1.5 bg-ocean-950/80 rounded-xl border border-ocean-800">
+                            <strong class="text-cyan-300">Amplitude :</strong> Liée à l'intensité (dB).
                         </div>
-
-                        <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <strong class="text-cyan-300">La Propagation :</strong> Vitesse dépendant de la température, pression et salinité.
+                        <div class="p-1.5 bg-ocean-950/80 rounded-xl border border-ocean-800">
+                            <strong class="text-cyan-300">Propagation :</strong> Dépend de la température et salinité.
                         </div>
                     </div>
 
                     <!-- Source de la section 1 -->
                     <div class="pt-1 border-t border-ocean-800 text-[9px]">
                         <span class="text-slate-400">Source :</span>
-                        <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline inline-flex items-center gap-0.5 ml-0.5">
-                            Spektrum.de — Le son et les vibrations <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
+                        <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-semibold hover:underline inline-flex items-center gap-0.5 ml-0.5">
+                            Spektrum.de <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- IMAGE 1 : Spektrum (AFFAICHÉE EN ENTIER) -->
-                <div class="image-frame-full rounded-2xl p-1.5 flex flex-col items-center">
-                    <div class="w-full h-24 flex items-center justify-center overflow-hidden rounded-xl bg-black/40">
+                <!-- IMAGE 1 : Spektrum (Image entière sans rognage) -->
+                <div class="full-img-box rounded-2xl p-1.5">
+                    <div class="w-full h-16 flex items-center justify-center overflow-hidden rounded-xl">
                         <img src="https://images.openai.com/static-rsc-4/jzp7Gcrhyta4YjTuXLCU5XHy0w1Q9Gzl7dwMtsa2reSugEW_tqPTI2sl7uVatGpEJnizkXUZrsJqF3rv5wyl5lpoNS6Rva-M49-7LwYGGRYQyqzjVaOzWQsE1q0zvheEr0A-OoWFnzVbceV-PU4-a-EkDAumMHrSNnrPF2FySL7RZ7UAP62gR-4rHjHg5G4w?purpose=fullsize" 
                              alt="Propagation des ondes mécaniques dans l'océan" 
-                             class="max-w-full max-h-full object-contain rounded-lg">
+                             class="max-w-full max-h-full object-contain rounded">
                     </div>
-                    <div class="text-[8px] text-slate-200 flex items-center justify-between w-full mt-1 px-1 font-semibold">
-                        <span class="text-cyan-300">Propagation & Réflexion</span>
-                        <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold">
-                            Spektrum.de <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
-                        </a>
+                    <div class="text-[9px] text-slate-300 flex items-center justify-between px-1 mt-0.5">
+                        <span>Propagation & Réflexion</span>
+                        <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">Spektrum.de</a>
                     </div>
                 </div>
 
@@ -245,60 +239,41 @@
                 <div class="glass-card rounded-2xl p-2.5 space-y-1.5 text-[10px] flex-1">
                     <div class="flex items-center justify-between border-b border-ocean-800 pb-1">
                         <div class="flex items-center gap-1.5">
-                            <span class="w-4 h-4 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-[10px] border border-cyan-400/30">2</span>
+                            <span class="w-4 h-4 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-[10px]">2</span>
                             <h2 class="font-bold text-xs text-white">Utilisation du son par les cétacés</h2>
                         </div>
                     </div>
 
                     <div class="space-y-1 text-[9px]">
-                        <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <h3 class="font-bold text-white text-[10px] flex items-center gap-1">
-                                <i class="fa-solid fa-comments text-cyan-400"></i> 1. Communication
-                            </h3>
-                            <p class="text-slate-300 leading-tight">
-                                Chants complexes de la baleine à bosse (reproduction). Diffusion sur très grandes distances.
-                            </p>
+                        <div class="p-1.5 bg-ocean-950/80 rounded-xl border border-ocean-800">
+                            <strong class="text-white">1. Communication :</strong> Chants complexes (reproduction, contact).
                         </div>
-
-                        <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <h3 class="font-bold text-white text-[10px] flex items-center gap-1">
-                                <i class="fa-solid fa-radar text-yellow-400"></i> 2. Écholocalisation (Sonar)
-                            </h3>
-                            <p class="text-slate-300 leading-tight">
-                                Le cachalot émet des clics sonores. L'onde rebondit sur une proie puis revient en écho.
-                            </p>
-                            <div class="p-0.5 bg-cyan-950/90 rounded text-center font-mono text-cyan-300 text-[8px] border border-cyan-500/30 mt-0.5 font-bold">
-                                Distance : d = (v × t) / 2
-                            </div>
+                        <div class="p-1.5 bg-ocean-950/80 rounded-xl border border-ocean-800">
+                            <strong class="text-white">2. Écholocalisation :</strong> Cachalot (clics sonores & analyse d'écho).
+                            <div class="font-mono text-cyan-300 text-[8px] mt-0.5">d = (v × t) / 2</div>
                         </div>
-
-                        <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <h3 class="font-bold text-white text-[10px] flex items-center gap-1">
-                                <i class="fa-solid fa-compass text-emerald-400"></i> 3. Repérage & Navigation
-                            </h3>
-                            <p class="text-slate-300 leading-tight">
-                                Maintien du contact visuellement impossible en profondeur.
-                            </p>
+                        <div class="p-1.5 bg-ocean-950/80 rounded-xl border border-ocean-800">
+                            <strong class="text-white">3. Repérage :</strong> Compensation de la faible visibilité.
                         </div>
                     </div>
 
                     <!-- Tableau de Données Chiffrées -->
-                    <div class="overflow-hidden rounded-xl border border-cyan-500/30 mt-1">
+                    <div class="overflow-x-auto rounded-xl border border-ocean-800">
                         <table class="w-full text-left text-[9px]">
-                            <thead class="bg-cyan-950 text-cyan-300 uppercase font-black text-[8px]">
+                            <thead class="bg-ocean-950 text-cyan-300 font-bold text-[8px]">
                                 <tr>
-                                    <th class="p-1">Espèce / Signal</th>
-                                    <th class="p-1">Plage de Fréquence</th>
+                                    <th class="p-1">Espèce</th>
+                                    <th class="p-1">Fréquence</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800 text-slate-200 bg-slate-900/60">
+                            <tbody class="divide-y divide-ocean-800/60 text-slate-200">
                                 <tr>
-                                    <td class="p-1 font-semibold">Baleines à fanons</td>
-                                    <td class="p-1 text-cyan-300 font-bold">0 Hz à 5 000 Hz</td>
+                                    <td class="p-1">Baleines à fanons</td>
+                                    <td class="p-1 text-cyan-300">0 à 5 000 Hz</td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 font-semibold">Baleine Bleue</td>
-                                    <td class="p-1 text-cyan-300 font-bold">15 Hz à 20 Hz (Infrasons)</td>
+                                    <td class="p-1">Baleine Bleue</td>
+                                    <td class="p-1 text-cyan-300">15 à 20 Hz</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -307,24 +282,22 @@
                     <!-- Source de la section 2 -->
                     <div class="pt-1 border-t border-ocean-800 text-[9px]">
                         <span class="text-slate-400">Source :</span>
-                        <a href="https://www.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline inline-flex items-center gap-0.5 ml-0.5">
-                            NOAA — Why do whales make sounds? <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
+                        <a href="https://www.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-semibold hover:underline inline-flex items-center gap-0.5 ml-0.5">
+                            NOAA <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- IMAGE 2 : NOAA Fisheries (AFFAICHÉE EN ENTIER) -->
-                <div class="image-frame-full rounded-2xl p-1.5 flex flex-col items-center">
-                    <div class="w-full h-24 flex items-center justify-center overflow-hidden rounded-xl bg-black/40">
+                <!-- IMAGE 2 : NOAA Fisheries (Image entière sans rognage) -->
+                <div class="full-img-box rounded-2xl p-1.5">
+                    <div class="w-full h-16 flex items-center justify-center overflow-hidden rounded-xl">
                         <img src="https://images.openai.com/static-rsc-4/3pAgg9gx5dM6dD_sGTPbB6WMwaabb7HWbZRzQ7OTFg6An5wjW-KklmhuI30X0Y3-aXIksOrwAWEo-rlgU4OjPyBNcu_r7U3cgJLFcj8i7ScESD4vMa-M7z45P-yaJzUWkIG8fie5kKBiIy1X5xxTTAid8J33yhb_LS6nXGL68w3-GeGzDWDzh2LMAo3_dHl7?purpose=fullsize" 
                              alt="Écholocalisation et enregistrement des sons" 
-                             class="max-w-full max-h-full object-contain rounded-lg">
+                             class="max-w-full max-h-full object-contain rounded">
                     </div>
-                    <div class="text-[8px] text-slate-200 flex items-center justify-between w-full mt-1 px-1 font-semibold">
-                        <span class="text-cyan-300">Écholocalisation & Vocalisations</span>
-                        <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold">
-                            NOAA Fisheries <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
-                        </a>
+                    <div class="text-[9px] text-slate-300 flex items-center justify-between px-1 mt-0.5">
+                        <span>Écholocalisation</span>
+                        <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">NOAA Fisheries</a>
                     </div>
                 </div>
 
@@ -334,91 +307,66 @@
             <div class="flex flex-col justify-between gap-1.5">
 
                 <!-- Catégorie 3 : Mesures Scientifiques & Hydrophones -->
-                <div class="glass-card rounded-2xl p-2.5 space-y-1.5 text-[10px] flex-1">
-                    <div class="flex items-center justify-between border-b border-ocean-800 pb-1">
+                <div class="glass-card rounded-2xl p-2 space-y-1 text-[10px]">
+                    <div class="flex items-center justify-between border-b border-ocean-800 pb-0.5">
                         <div class="flex items-center gap-1.5">
-                            <span class="w-4 h-4 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-[10px] border border-cyan-400/30">3</span>
-                            <h2 class="font-bold text-xs text-white">Mesures & Hydrophones</h2>
+                            <span class="w-4 h-4 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold flex items-center justify-center text-[10px]">3</span>
+                            <h2 class="font-bold text-xs text-white">Mesures & Hydrophone</h2>
                         </div>
                     </div>
 
-                    <p class="text-slate-200 leading-tight text-[9px]">
-                        Les chercheurs utilisent un <strong class="text-cyan-300">hydrophone</strong> transformant la pression acoustique en signal électrique.
+                    <p class="text-slate-200 text-[9px] leading-tight">
+                        <strong>Hydrophone :</strong> Capteur piézoélectrique enregistrant les sons sous-marins. Le <strong>spectrogramme</strong> représente le Temps (X), la Fréquence (Y) et l'Intensité (Couleurs).
                     </p>
 
-                    <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60 text-[8px]">
-                        <strong class="text-white block font-bold border-b border-slate-700 pb-0.5 mb-0.5">Le Spectrogramme :</strong>
-                        <ul class="space-y-0.5 text-slate-300">
-                            <li><strong class="text-cyan-300">Axe X :</strong> Temps (s) | <strong class="text-cyan-300">Axe Y :</strong> Fréquence (Hz)</li>
-                            <li><strong class="text-cyan-300">Couleurs :</strong> Amplitude / Intensité (dB)</li>
-                        </ul>
-                    </div>
-
-                    <!-- IMAGE 3 : NOAA Sanctuaries 1 (AFFICHER EN ENTIER) -->
-                    <div class="image-frame-full rounded-2xl p-1 flex flex-col items-center">
-                        <div class="w-full h-16 flex items-center justify-center overflow-hidden rounded-lg bg-black/40">
+                    <!-- IMAGE 3 : NOAA Sanctuaries 1 (Entière) -->
+                    <div class="full-img-box rounded-xl p-1">
+                        <div class="w-full h-11 flex items-center justify-center overflow-hidden rounded">
                             <img src="https://images.openai.com/static-rsc-4/XeG41ywZIWtL4Pt46bJfusMGzYLZ9GtfBWutqprIwSTJotvkLIdIuzpPREIiwrW1vfD-CPewcl5_ZOXCdss4o-M-6uUvV7kdakXUYdMiblDQP3lPWQKLBA029xbHDFly7_D5iOG4TolVryZ-TXmzqsR2Fsobq1nYLM1QhqrirDR77QPbySMz0HlxM_D87l6k?purpose=fullsize" 
                                  alt="Station d'écoute par hydrophone" 
-                                 class="max-w-full max-h-full object-contain rounded">
+                                 class="max-w-full max-h-full object-contain">
                         </div>
-                        <div class="text-[8px] text-slate-200 flex items-center justify-between w-full mt-0.5 px-0.5 font-semibold">
-                            <span class="text-cyan-300">Capteurs hydroacoustiques</span>
-                            <a href="https://sanctuaries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold">
-                                Sanctuaries NOAA <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
-                            </a>
+                        <div class="text-[8px] text-slate-300 flex items-center justify-between mt-0.5 px-0.5">
+                            <span>Hydrophone</span>
+                            <a href="https://sanctuaries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">Sanctuaries NOAA</a>
                         </div>
-                    </div>
-
-                    <!-- Sources de la section 3 -->
-                    <div class="pt-0.5 border-t border-ocean-800 text-[8px] space-y-0.5">
-                        <a href="https://sanctuaries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline block">
-                            • NOAA Sanctuaries — Ocean Acoustics <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
-                        </a>
-                        <a href="https://oceanexplorer.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline block">
-                            • NOAA Ocean Exploration — Hydrophones <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
-                        </a>
                     </div>
                 </div>
 
                 <!-- Catégorie 4 : Pollution Sonore Anthropique -->
                 <div class="glass-card rounded-2xl p-2 space-y-1 text-[10px]">
                     <div class="flex items-center justify-between border-b border-ocean-800 pb-0.5">
-                        <div class="flex items-center gap-1">
-                            <span class="w-3.5 h-3.5 rounded bg-red-500/20 text-red-400 font-bold flex items-center justify-center text-[9px] border border-red-500/30">4</span>
-                            <h2 class="font-bold text-[11px] text-white">Impact du bruit humain</h2>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-4 h-4 rounded-md bg-red-500/20 text-red-400 font-bold flex items-center justify-center text-[10px]">4</span>
+                            <h2 class="font-bold text-xs text-white">Pollution sonore humaine</h2>
                         </div>
                     </div>
 
                     <p class="text-[9px] text-slate-200 leading-tight">
-                        Navires, sonars et forages génèrent un bruit perturbant la faune.
+                        Navires et sonars provoquent :
                     </p>
 
                     <div class="grid grid-cols-2 gap-1 text-[8px]">
-                        <div class="p-1 bg-red-950/40 border border-red-500/30 rounded-xl">
-                            <strong class="text-red-300 block">Masquage</strong>
-                            Empêche la détection.
+                        <div class="p-1 bg-red-950/40 border border-red-500/30 rounded">
+                            <strong class="text-red-300 block">Masquage</strong> Perturbe les chants.
                         </div>
-                        <div class="p-1 bg-amber-950/40 border border-amber-500/30 rounded-xl">
-                            <strong class="text-amber-300 block">Désorientation</strong>
-                            Changement de cap.
+                        <div class="p-1 bg-amber-950/40 border border-amber-500/30 rounded">
+                            <strong class="text-amber-300 block">Stress</strong> Désorientation.
                         </div>
                     </div>
 
-                    <!-- IMAGE 4 : NOAA Sanctuaries 2 (AFFICHER EN ENTIER) -->
-                    <div class="image-frame-full rounded-2xl p-1 mt-0.5 flex flex-col items-center">
-                        <div class="w-full h-14 flex items-center justify-center overflow-hidden rounded-lg bg-black/40">
+                    <!-- IMAGE 4 : NOAA Sanctuaries 2 (Entière) -->
+                    <div class="full-img-box rounded-xl p-1">
+                        <div class="w-full h-11 flex items-center justify-center overflow-hidden rounded">
                             <img src="https://images.openai.com/static-rsc-4/D1U7LqAzhza6-M57_3vdGGftMGpI0Rx5PPXvcwUBCtDcQPhUneF5lgh6o1a5OGps4SxKz_e7AhTEI-SPk_uCOJNfWCotcnoKlhm2qaKSu0M3iSkw7mVxsesiE0mcJvGY9r43j5Be8eFl1tUsei1HBPsXzi422h2AWwvOXjM10rfPHDgCLMh7U2w6i7Byf-OY?purpose=fullsize" 
                                  alt="Recherche sur le bruit anthropique" 
-                                 class="max-w-full max-h-full object-contain rounded">
+                                 class="max-w-full max-h-full object-contain">
                         </div>
                     </div>
 
-                    <!-- Source de la section 4 -->
-                    <div class="pt-0.5 border-t border-ocean-800 text-[8px]">
-                        <span class="text-slate-400">Source :</span>
-                        <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline inline-flex items-center gap-0.5 ml-0.5">
-                            NOAA Fisheries — Ocean Sound <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
-                        </a>
+                    <!-- Source section 4 -->
+                    <div class="text-[8px] pt-0.5 border-t border-ocean-800">
+                        <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">NOAA Fisheries — Ocean Sound</a>
                     </div>
                 </div>
 
@@ -427,11 +375,11 @@
         </main>
 
         <!-- SECTION CONCLUSION DE L'AFFICHE -->
-        <div class="glass-card rounded-2xl p-2.5 border-t-2 border-t-cyan-400 shadow-lg">
-            <h2 class="font-black text-xs text-white flex items-center gap-1.5 mb-0.5">
+        <div class="glass-card rounded-2xl p-2 border-t-2 border-t-cyan-400">
+            <h2 class="font-bold text-[11px] text-white flex items-center gap-1 mb-0.5">
                 <i class="fa-solid fa-flag-checkered text-cyan-400"></i> Conclusion
             </h2>
-            <p class="text-[10px] text-slate-200 leading-snug">
+            <p class="text-[9px] text-slate-200 leading-tight">
                 Le son joue un rôle vital dans la vie des baleines. Grâce aux vibrations et aux ondes mécaniques, elles communiquent, se repèrent et chassent dans un milieu où la lumière pénètre peu. Dans l'eau de mer, le son se propage environ <strong>4,4 fois plus vite que dans l'air (1 500 m/s contre 340 m/s)</strong>. Les scientifiques enregistrent ces signaux avec des <strong>hydrophones</strong> et les analysent sur des <strong>spectrogrammes</strong>. La préservation de l'environnement sonore marin contre la pollution anthropique est désormais un enjeu majeur pour la conservation des cétacés.
             </p>
         </div>
