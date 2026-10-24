@@ -1,470 +1,623 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABP - Formation Call Radio</title>
-    <style>
-        :root {
-            --bg-color: #121214;
-            --card-bg: #1a1a1e;
-            --border-color: #2b2b32;
-            --text-color: #e1e1e6;
-            --text-muted: #a8a8b3;
-            --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        header p {
-            color: var(--text-muted);
-            margin-top: 5px;
-            font-weight: 500;
-        }
-
-        .intro-box {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 35px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            color: #ffffff;
-            margin: 45px 0 20px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--border-color);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #1c1c24;
-            padding: 12px 20px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--warning);
-        }
-
-        .section-header h3 {
-            color: #ffffff;
-            font-size: 1.25rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 22px;
-            margin-bottom: 20px;
-        }
-
-        .card-title {
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        p {
-            margin-bottom: 12px;
-        }
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        ul, ol {
-            margin-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: #ffffff;
-        }
-
-        .badge-danger {
-            background-color: rgba(239, 68, 68, 0.15);
-            color: var(--danger);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .badge-warning {
-            background-color: rgba(245, 158, 11, 0.15);
-            color: var(--warning);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .badge-info {
-            background-color: rgba(59, 130, 246, 0.15);
-            color: #60a5fa;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .scenario-box {
-            background-color: #141416;
-            border-left: 3px solid var(--primary);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .scenario-reply {
-            background-color: #191a1a;
-            border: 1px dashed var(--success);
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 4px;
-            color: #a7f3d0;
-        }
-
-        .mnemonique {
-            color: #38bdf8;
-            font-weight: bold;
-        }
-
-        /* --- Style du Questionnaire Interactif --- */
-        .quiz-section {
-            margin-top: 60px;
-            background-color: #131316;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            padding: 30px;
-        }
-
-        .quiz-title {
-            text-align: center;
-            color: #ffffff;
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        .question-block {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 18px;
-            margin-bottom: 20px;
-        }
-
-        .question-text {
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #ffffff;
-        }
-
-        .options-group label {
-            display: block;
-            background-color: #141416;
-            border: 1px solid var(--border-color);
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .options-group label:hover {
-            border-color: var(--primary);
-            background-color: #1d1d22;
-        }
-
-        .options-group input {
-            margin-right: 10px;
-        }
-
-        .btn-submit {
-            display: block;
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 25px;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--primary-hover);
-        }
-
-        #result-box {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            border-radius: 6px;
-            margin-top: 25px;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .pass {
-            background-color: rgba(16, 185, 129, 0.2);
-            color: var(--success);
-            border: 1px solid var(--success);
-        }
-
-        .fail {
-            background-color: rgba(239, 44, 44, 0.2);
-            color: var(--danger);
-            border: 1px solid var(--danger);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <header>
-            <h1>San Andreas Border Patrol</h1>
-            <p>Formation Procédures de Communication Radio</p>
-        </header>
-
-        <div class="intro-box">
-            <p><strong>CONDITION EXIGÉE :</strong> La formation Call Radio est essentielle et indispensable pour tous les agents. La communication est nécessaire pour être efficace entre toutes les unités, permet de transmettre les informations rapidement et garantit la sécurité de l'intégralité des effectifs. <span class="badge-warning">À effectuer après 1 jour de service minimum.</span></p>
-        </div>
-
-        <!-- ==================== PARTIE 1 ==================== -->
-        <h2>I - Partie Théorique & Règles d'or</h2>
-        
-        <div class="card">
-            <div class="card-title">Syntaxe obligatoire des appels</div>
-            <p>Avant chaque communication, vous devez obligatoirement annoncer en radio <strong>votre matricule</strong>, puis désigner <strong>le matricule ou le groupe ciblé</strong>.</p>
-            <ul>
-                <li><em>Exemple :</em> <span class="mnemonique">“101 à 132….”</span></li>
-                <li><em>Exemple :</em> <span class="mnemonique">“108 à Adam 103….”</span></li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <div class="card-title">Charte de comportement sur la fréquence</div>
-            <ul>
-                <li><strong>Concision :</strong> Un call doit être bref, concis et sans bégaiement. Pas de discussion longue ou inutile.</li>
-                <li><strong>Sang-froid :</strong> On ne panique pas en radio. On garde son calme et on ne transmet aucune émotion.</li>
-                <li><strong>Discipline :</strong> Une réponse à un call qui vous est destiné est <strong>obligatoire</strong>.</li>
-                <li><strong>Priorité absolue :</strong> On ne coupe jamais la parole. Les supérieurs ont la priorité radio systématique.</li>
-                <li><strong>Gestion de crise :</strong> Lors d’un <strong>10-24 urgent</strong>, vous devez immédiatement basculer sur la radio commune : la fréquence <span class="badge-danger">10-49</span>.</li>
-                <li><strong>Disponibilité :</strong> Lors de votre arrivée sur fréquence, annoncez-vous immédiatement <em>(Ex: “145 arrivé sur fréquence”)</em>.</li>
-                <li><strong>Technique :</strong> Assurez-vous d’avoir bien appuyé sur votre bouton radio avant de parler, et relâchez-le uniquement lorsque vous avez fini votre phrase.</li>
-            </ul>
-        </div>
-
-        <!-- ==================== PARTIE 2 ==================== -->
-        <h2>II - Questions Rapides de Réflexe</h2>
-        <div class="section-header">
-            <h3>Contrôle des connaissances fondamentales</h3>
-            <span class="badge-info">Interrogatoire oral</span>
-        </div>
-
-        <div class="card">
-            <p>Le formateur doit poser environ <strong>20 calls codes</strong> aléatoires à l'agent (Ex: <em>"Que signifie 10-11 ?"</em>). L'agent doit donner la signification parfaite. Si ce n'est pas le cas, le formateur corrige immédiatement.</p>
-            
-            <div class="scenario-box">
-                <p><strong>Question :</strong> Que dites-vous lors de votre prise de service ?</p>
-                <p class="scenario-reply"><strong>Réponse attendue :</strong> « [Mon Matricule], 10-8 mes respects. »</p>
-            </div>
-
-            <div class="scenario-box">
-                <p><strong>Question :</strong> Que faites-vous si un supérieur parle en radio ?</p>
-                <p class="scenario-reply"><strong>Réponse attendue :</strong> « On se tait et on attend qu’il ait terminé. »</p>
-            </div>
-
-            <div class="scenario-box">
-                <p><strong>Question :</strong> Que faites-vous si un call vous est adressé ?</p>
-                <p class="scenario-reply"><strong>Réponse attendue :</strong> « Je réponds systématiquement et obligatoirement. »</p>
-            </div>
-        </div>
-
-        <!-- ==================== PARTIE 3 ==================== -->
-        <h2>III - Mises en Situation Pratiques</h2>
-        
-        <div class="card">
-            <div class="card-title">Exemples de phraséologie en patrouille</div>
-
-            <div class="scenario-box">
-                <p><strong>Situation 1 :</strong> Un coup de feu est entendu près d’une frontière.</p>
-                <p class="scenario-reply"><strong>Call à réaliser :</strong> “164 à toutes unités, 10-13 entendu, vers [Lieu/Frontière]…”</p>
-            </div>
-
-            <div class="scenario-box">
-                <p><strong>Situation 2 :</strong> Un individu armé et dangereux franchit une frontière en courant.</p>
-                <p class="scenario-reply"><strong>Call à réaliser :</strong> “148 à toutes unités, 10-53 d’un 10-60 qui progresse vers la zone… frontière…”</p>
-            </div>
-
-            <div class="scenario-box">
-                <p><strong>Situation 3 :</strong> Un citoyen est au sol après l’avoir tazer suite à une course poursuite.</p>
-                <p class="scenario-reply"><strong>Call à réaliser :</strong> “124 à toutes unités, j’effectue un 10-52 au niveau de… après avoir effectué un 10-31 sur cette personne.”</p>
-            </div>
-
-            <div class="scenario-box">
-                <p><strong>Situation 4 :</strong> Vous constatez que votre collègue s'est fait abattre lors de son contrôle.</p>
-                <p class="scenario-reply"><strong>Call à réaliser :</strong> “164 à toutes unités, 11-44 frontière Madrazo, 10-99, besoin de 10-24 urgent !”</p>
-            </div>
-
-            <div class="scenario-box">
-                <p><strong>Situation 5 :</strong> Une Sentinel noire vient d’être contrôlée sur la frontière diamantaire, elle redémarre et fuit vers le nord.</p>
-                <p class="scenario-reply"><strong>Call à réaliser :</strong> “Code 2 d’une fugitive noire, direction nord, frontière diamantaire.”</p>
-            </div>
-        </div>
-
-        <!-- ==================== EXAMEN INTERACTIF ==================== -->
-        <div class="quiz-section">
-            <div class="quiz-title">📝 Examen Pratique : Test des compétences (Seuil : 4/5)</div>
-            <form id="radioQuizForm">
-                
-                <!-- Q1 -->
-                <div class="question-block">
-                    <p class="question-text">1. Un individu en Tailgater S bleue refuse un contrôle et force la frontière de la base militaire en se dirigeant vers le nord. Quel est le call exact ? (1 pt)</p>
-                    <div class="options-group">
-                        <label><input type="radio" name="q1" value="0"> “147 à toutes unités, individu en fuite à la base militaire direction nord.”</label>
-                        <label><input type="radio" name="q1" value="1"> “147 à toutes unités, 10-53 d’une tailgater S bleu frontière base militaire direction nord.”</label>
-                        <label><input type="radio" name="q1" value="0"> “Demande d'aide base militaire pour une voiture bleue qui va vers le nord.”</label>
-                    </div>
-                </div>
-
-                <!-- Q2 -->
-                <div class="question-block">
-                    <p class="question-text">2. Vous venez de terminer le contrôle d’une Buffalo rouge sur la frontière du casino, le véhicule repart vers le sud. Quel est le call ? (1 pt)</p>
-                    <div class="options-group">
-                        <label><input type="radio" name="q2" value="1"> “Code 2 de la Buffalo rouge direction sud frontière casino.”</label>
-                        <label><input type="radio" name="q2" value="0"> “10-11 terminé sur la Buffalo rouge au casino.”</label>
-                        <label><input type="radio" name="q2" value="0"> “À toutes les unités, la Buffalo rouge du casino va vers le sud en Code 3.”</label>
-                    </div>
-                </div>
-
-                <!-- Q3 -->
-                <div class="question-block">
-                    <p class="question-text">3. Une fusillade majeure éclate soudainement sur la frontière Marina. Comment l'annoncez-vous ? (1 pt)</p>
-                    <div class="options-group">
-                        <label><input type="radio" name="q3" value="0"> “Marina, Marina, ça tire, venez vite !”</label>
-                        <label><input type="radio" name="q3" value="0"> “126 à toutes unités, 10-13 en cours à la Marina.”</label>
-                        <label><input type="radio" name="q3" value="1"> “126 à toutes unités, 10-44 frontière Marina, besoin de 10-24 urgent.”</label>
-                    </div>
-                </div>
-
-                <!-- Q4 -->
-                <div class="question-block">
-                    <p class="question-text">4. Un agent se fait agresser à l'arme blanche (couteau) sur la frontière du FIB. Quel call formulez-vous ? (1 pt)</p>
-                    <div class="options-group">
-                        <label><input type="radio" name="q4" value="1"> “114 à toutes unités, 10-99 frontière FIB par un 10-60, besoin de 10-24.”</label>
-                        <label><input type="radio" name="q4" value="0"> “114 à toutes unités, un agent est blessé par un couteau au FIB, code 3.”</label>
-                        <label><input type="radio" name="q4" value="0"> “10-53 d'un homme armé d'un couteau qui attaque le FIB, envoyez du monde.”</label>
-                    </div>
-                </div>
-
-                <!-- Q5 -->
-                <div class="question-block">
-                    <p class="question-text">5. Vous entendez distinctement des détonations (coups de feu) à proximité de la frontière observatoire est. Quel est l'appel ? (1 pt)</p>
-                    <div class="options-group">
-                        <label><input type="radio" name="q5" value="0"> “123 à toutes unités, fusillade secteur observatoire est.”</label>
-                        <label><input type="radio" name="q5" value="1"> “123 à toutes unités, 10-13 proche de la frontière observatoire est.”</label>
-                        <label><input type="radio" name="q5" value="0"> “123 à toutes unités, 11-44 entendu vers l'observatoire.”</label>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-submit" onclick="checkRadioAnswers()">Calculer la note finale de l'agent</button>
-            </form>
-
-            <div id="result-box"></div>
-        </div>
-
-        <footer>
-            <p>SABP — Procédures de Communication & Transmissions • 2026</p>
-        </footer>
-    </div>
-
+    <title>Fiche Physique-Chimie : Les Baleines, le Son et les Vibrations</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
-        function checkRadioAnswers() {
-            const form = document.getElementById('radioQuizForm');
-            let score = 0;
-            let totalQuestions = 5;
-
-            for (let i = 1; i <= totalQuestions; i++) {
-                const checkedOption = form.querySelector(`input[name="q${i}"]:checked`);
-                if (checkedOption && checkedOption.value === "1") {
-                    score++;
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0a324d',
+                            950: '#041d2f',
+                        }
+                    }
                 }
-            }
-
-            const resultBox = document.getElementById('result-box');
-            resultBox.style.display = "block";
-
-            if (score >= 4) {
-                resultBox.className = "pass";
-                resultBox.innerHTML = `FORMATION VALIDÉE ! 🎉<br>Note : ${score} / ${totalQuestions}<br>L'agent maîtrise les codes de transmission obligatoires et est apte à utiliser la fréquence de service.`;
-            } else {
-                resultBox.className = "fail";
-                resultBox.innerHTML = `FORMATION REFUSÉE ❌<br>Note : ${score} / ${totalQuestions} (Minimum requis : 4/5)<br>L'agent n'a pas atteint le seuil de précision radio exigé. Réexplications des codes et deuxième essai obligatoires.`;
             }
         }
     </script>
+    <style>
+        /* Modern Glassmorphism & Custom Wave Effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(224, 242, 254, 0.6);
+        }
+        .dark-glass {
+            background: rgba(4, 29, 47, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .ocean-gradient {
+            background: linear-gradient(135deg, #041d2f 0%, #075985 50%, #0284c7 100%);
+        }
+        .wave-pulse {
+            box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5);
+            animation: pulse-wave 2s infinite;
+        }
+        @keyframes pulse-wave {
+            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+            70% { box-shadow: 0 0 0 18px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #041d2f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white">
+
+    <!-- Top Announcement Bar / Level Tag -->
+    <div class="bg-gradient-to-r from-cyan-600 to-blue-700 text-white text-xs sm:text-sm font-semibold py-2 px-4 text-center shadow-md">
+        <span class="inline-block bg-white/20 px-2 py-0.5 rounded-full mr-2">Niveau Lycée</span>
+        Fiche de Révision Physique-Chimie — Ondes & Acoustique Marine
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-ocean-950/90 backdrop-blur-md border-b border-ocean-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid font-bold fa-water"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-white leading-tight">Acoustique Marine</h1>
+                    <p class="text-xs text-cyan-400">Physique-Chimie • Spé / Troncs communs</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#propagation" class="hover:text-cyan-400 transition-colors">1. Le Son</a>
+                <a href="#donnees" class="hover:text-cyan-400 transition-colors">2. Chiffres Clés</a>
+                <a href="#utilisation" class="hover:text-cyan-400 transition-colors">3. Usages des Baleines</a>
+                <a href="#mesure" class="hover:text-cyan-400 transition-colors">4. Mesure & Hydrophone</a>
+                <a href="#impact" class="hover:text-cyan-400 transition-colors">5. Bruit Humain</a>
+                <a href="#sources" class="hover:text-cyan-400 transition-colors">6. Sources</a>
+            </nav>
+            <a href="#sources" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-lg text-xs sm:text-sm transition-all shadow-md shadow-cyan-500/20">
+                Sources scientifiques
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Header Banner -->
+    <section class="relative ocean-gradient text-white py-16 sm:py-24 overflow-hidden border-b border-ocean-800">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <span class="text-xs uppercase tracking-widest font-extrabold text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full inline-block mb-4">
+                Fiche de Synthèse & Affiche
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-400 mb-6 leading-tight">
+                LES BALEINES : LE SON ET LES VIBRATIONS
+            </h1>
+            <p class="text-base sm:text-xl text-cyan-100 max-w-3xl mx-auto font-light leading-relaxed">
+                Comment les géants des océans utilisent-ils les ondes sonores et la mécanique des fluides pour communiquer, s'orienter et chasser ?
+            </p>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-4 text-xs sm:text-sm">
+                <div class="bg-ocean-900/80 border border-ocean-700 px-4 py-2 rounded-lg flex items-center gap-2">
+                    <i class="fa-solid fa-wave-square text-cyan-400"></i> Ondes Mécaniques
+                </div>
+                <div class="bg-ocean-900/80 border border-ocean-700 px-4 py-2 rounded-lg flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-yellow-400"></i> $c_{\text{eau}} \approx 1\,500\text{ m/s}$
+                </div>
+                <div class="bg-ocean-900/80 border border-ocean-700 px-4 py-2 rounded-lg flex items-center gap-2">
+                    <i class="fa-solid fa-microphone-lines text-emerald-400"></i> Hydrophone & Spectrogramme
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 flex-grow">
+
+        <!-- SECTION 1 : Fonctionnement du son -->
+        <section id="propagation" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">1</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Comment le son fonctionne-t-il ?</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                <!-- Text Box -->
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="bg-ocean-900/60 border border-ocean-800 rounded-2xl p-6 sm:p-8 space-y-4 shadow-xl">
+                        <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+                            Le son est une <strong class="text-cyan-300 font-semibold">onde mécanique progressive</strong> qui correspond à la propagation de perturbations de pression de proche en proche dans un <strong class="text-white font-semibold">milieu matériel</strong> (liquide, solide ou gaz).
+                        </p>
+                        
+                        <div class="p-4 bg-red-950/40 border-l-4 border-red-500 rounded-r-lg">
+                            <p class="text-sm text-red-200">
+                                <i class="fa-solid fa-triangle-exclamation mr-1 text-red-400"></i> <strong>Règle fondamentale :</strong> Le son a besoin de matière pour se propager. <span class="underline">Il ne se propage jamais dans le vide !</span>
+                            </p>
+                        </div>
+
+                        <h3 class="font-bold text-lg text-cyan-200 pt-2">Les 3 notions essentielles du programme :</h3>
+                        
+                        <div class="grid sm:grid-cols-3 gap-4 pt-1">
+                            <div class="bg-ocean-950 p-4 rounded-xl border border-ocean-800 hover:border-cyan-500/50 transition-all">
+                                <div class="text-cyan-400 text-lg mb-2"><i class="fa-solid fa-stopwatch"></i></div>
+                                <h4 class="font-bold text-white text-sm">La Fréquence ($f$)</h4>
+                                <p class="text-xs text-slate-400 mt-1">Mesurée en <strong class="text-cyan-300">Hertz (Hz)</strong>. Nombre de vibrations par seconde. Détermine la hauteur du son (Grave vs Aigu).</p>
+                            </div>
+
+                            <div class="bg-ocean-950 p-4 rounded-xl border border-ocean-800 hover:border-cyan-500/50 transition-all">
+                                <div class="text-cyan-400 text-lg mb-2"><i class="fa-solid fa-chart-line"></i></div>
+                                <h4 class="font-bold text-white text-sm">L'Amplitude</h4>
+                                <p class="text-xs text-slate-400 mt-1">Liée à l'intensité de la vibration et au <strong class="text-cyan-300">niveau sonore</strong>. Plus l'amplitude est forte, plus le son est puissant.</p>
+                            </div>
+
+                            <div class="bg-ocean-950 p-4 rounded-xl border border-ocean-800 hover:border-cyan-500/50 transition-all">
+                                <div class="text-cyan-400 text-lg mb-2"><i class="fa-solid fa-share-nodes"></i></div>
+                                <h4 class="font-bold text-white text-sm">La Propagation</h4>
+                                <p class="text-xs text-slate-400 mt-1">Déplacement de l'énergie de l'onde dans le milieu, <strong class="text-cyan-300">sans transport global de matière</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image 1 Container with Source -->
+                <div class="lg:col-span-5">
+                    <div class="bg-ocean-900/60 border border-ocean-800 rounded-2xl p-4 shadow-xl text-center group">
+                        <div class="overflow-hidden rounded-xl mb-3 relative">
+                            <img src="https://images.openai.com/static-rsc-4/jzp7Gcrhyta4YjTuXLCU5XHy0w1Q9Gzl7dwMtsa2reSugEW_tqPTI2sl7uVatGpEJnizkXUZrsJqF3rv5wyl5lpoNS6Rva-M49-7LwYGGRYQyqzjVaOzWQsE1q0zvheEr0A-OoWFnzVbceV-PU4-a-EkDAumMHrSNnrPF2FySL7RZ7UAP62gR-4rHjHg5G4w?purpose=fullsize" 
+                                 alt="Propagation du son et vibrations des baleines" 
+                                 class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 rounded-lg"
+                                 onerror="this.src='https://placehold.co/600x400/075985/ffffff?text=Propagation+du+son+dans+l%27eau'">
+                            <div class="absolute bottom-2 right-2 bg-slate-950/80 px-2 py-1 rounded text-[10px] text-slate-300">
+                                Ondes mécaniques
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-400 flex items-center justify-between px-2">
+                            <span>Schéma de la vibration acoustique</span>
+                            <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1 font-medium">
+                                Source : Spektrum.de <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 : Données Scientifiques Chiffrées -->
+        <section id="donnees" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">2</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Données scientifiques chiffrées</h2>
+            </div>
+
+            <!-- Key Speed Comparison Stat Banner -->
+            <div class="ocean-gradient rounded-2xl p-6 sm:p-8 border border-ocean-700 shadow-2xl mb-8">
+                <div class="grid md:grid-cols-3 gap-6 text-center items-center">
+                    <div class="bg-ocean-950/60 p-6 rounded-xl border border-cyan-500/20">
+                        <span class="text-xs text-cyan-300 uppercase font-bold tracking-wider">Vitesse dans l'Eau de mer</span>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white my-2">≈ 1 500 m/s</div>
+                        <p class="text-xs text-slate-300">Propagation très rapide due à la forte densité moléculaire de l'eau</p>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center text-xl font-bold mb-2 wave-pulse">
+                            4,4×
+                        </div>
+                        <p class="text-sm font-semibold text-cyan-200">Plus rapide dans l'eau que dans l'air !</p>
+                        <p class="text-xs text-slate-400 mt-1">Variable selon température, pression et salinité</p>
+                    </div>
+
+                    <div class="bg-ocean-950/60 p-6 rounded-xl border border-cyan-500/20">
+                        <span class="text-xs text-cyan-300 uppercase font-bold tracking-wider">Vitesse dans l'Air</span>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white my-2">≈ 340 m/s</div>
+                        <p class="text-xs text-slate-300">Vitesse de référence à température ambiante (20°C)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Data Table -->
+            <div class="bg-ocean-900/60 border border-ocean-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="p-4 sm:p-6 bg-ocean-950/80 border-b border-ocean-800 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-white"><i class="fa-solid fa-table mr-2 text-cyan-400"></i>Synthèse des paramètres acoustiques des cétacés</h3>
+                    <a href="https://www.fisheries.noaa.gov/topic/ocean-acoustics" target="_blank" class="text-xs text-cyan-400 hover:underline">Source : NOAA Fisheries</a>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-slate-300">
+                        <thead class="bg-ocean-950 text-cyan-200 uppercase text-xs font-semibold">
+                            <tr>
+                                <th class="py-3.5 px-6">Donnée physique / Biologique</th>
+                                <th class="py-3.5 px-6">Valeur / Information exacte</th>
+                                <th class="py-3.5 px-6">Explication & Contexte</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-ocean-800/60">
+                            <tr class="hover:bg-ocean-800/30 transition-colors">
+                                <td class="py-4 px-6 font-semibold text-white">Fréquence des baleines à fanons</td>
+                                <td class="py-4 px-6 text-cyan-300 font-mono font-bold">0 à 5 000 Hz</td>
+                                <td class="py-4 px-6 text-xs text-slate-400">Plage générale de basses fréquences permettant aux sons de voyager sur d'immenses distances.</td>
+                            </tr>
+                            <tr class="hover:bg-ocean-800/30 transition-colors">
+                                <td class="py-4 px-6 font-semibold text-white">Chants de la Baleine Bleue</td>
+                                <td class="py-4 px-6 text-cyan-300 font-mono font-bold">15 à 20 Hz</td>
+                                <td class="py-4 px-6 text-xs text-slate-400">Infrasons très graves, souvent inaudibles pour l'oreille humaine directe sans équipement.</td>
+                            </tr>
+                            <tr class="hover:bg-ocean-800/30 transition-colors">
+                                <td class="py-4 px-6 font-semibold text-white">Unité de Mesure de Fréquence</td>
+                                <td class="py-4 px-6 text-cyan-300 font-mono font-bold">Hertz (Hz)</td>
+                                <td class="py-4 px-6 text-xs text-slate-400">Équivalent à $1\text{ cycle par seconde}$ ($1\text{ Hz} = 1\text{ s}^{-1}$).</td>
+                            </tr>
+                            <tr class="hover:bg-ocean-800/30 transition-colors">
+                                <td class="py-4 px-6 font-semibold text-white">Capteur de Mesure Sous-Marin</td>
+                                <td class="py-4 px-6 text-cyan-300 font-semibold">Hydrophone</td>
+                                <td class="py-4 px-6 text-xs text-slate-400">Microphone étanche spécialisé enregistrant la pression acoustique dans l'eau.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 : Usages des Sons par les Baleines -->
+        <section id="utilisation" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">3</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Comment les baleines utilisent-elles les sons ?</h2>
+            </div>
+
+            <p class="text-slate-300 mb-6">
+                Chaque espèce possède son propre répertoire acoustique adapté à sa physiologie et son mode de vie dans l'océan.
+            </p>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- 3 Pillars Grid -->
+                <div class="lg:col-span-7 space-y-4">
+                    <!-- Function 1 -->
+                    <div class="bg-ocean-900/60 border border-ocean-800 p-6 rounded-2xl flex gap-4 hover:border-cyan-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1">1. Communiquer entre elles</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Les baleines à bosse émettent des <strong>chants complexes</strong>, structurés en séquences répétitives qui évoluent au fil du temps. Ces chants jouent un rôle essentiel dans la reproduction et la cohésion sociale.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Function 2 -->
+                    <div class="bg-ocean-900/60 border border-ocean-800 p-6 rounded-2xl flex gap-4 hover:border-cyan-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-radar"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1">2. Se repérer et chasser (Écholocalisation)</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Le cachalot (baleine à dents) utilise l'<strong>écholocalisation</strong>. Il émet des clics très brefs et puissants. L'onde se réfléchit sur les obstacles ou proies (ex. calamars géants) et l'écho en retour lui donne une carte 3D de son environnement.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Function 3 -->
+                    <div class="bg-ocean-900/60 border border-ocean-800 p-6 rounded-2xl flex gap-4 hover:border-cyan-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-teal-600/20 text-teal-400 shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1">3. Retrouver leurs congénères à grande distance</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Dans l'immensité océanique où la lumière ne pénètre qu'à quelques dizaines de mètres, les sons de basse fréquence traversent des centaines de kilomètres pour garder le contact avec le groupe.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Source tag -->
+                    <div class="p-3 bg-ocean-950/80 rounded-xl border border-ocean-800 text-xs text-slate-400 flex items-center justify-between">
+                        <span>Description validée par l'agence scientifique américaine :</span>
+                        <a href="https://www.noaa.gov" target="_blank" class="text-cyan-400 hover:underline font-semibold">NOAA — Why do whales make sounds?</a>
+                    </div>
+                </div>
+
+                <!-- Image 2 Container with Source -->
+                <div class="lg:col-span-5">
+                    <div class="bg-ocean-900/60 border border-ocean-800 rounded-2xl p-4 shadow-xl group">
+                        <div class="overflow-hidden rounded-xl mb-3 relative">
+                            <img src="https://images.openai.com/static-rsc-4/3pAgg9gx5dM6dD_sGTPbB6WMwaabb7HWbZRzQ7OTFg6An5wjW-KklmhuI30X0Y3-aXIksOrwAWEo-rlgU4OjPyBNcu_r7U3cgJLFcj8i7ScESD4vMa-M7z45P-yaJzUWkIG8fie5kKBiIy1X5xxTTAid8J33yhb_LS6nXGL68w3-GeGzDWDzh2LMAo3_dHl7?purpose=fullsize" 
+                                 alt="Écholocalisation du cachalot et spectrogramme" 
+                                 class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 rounded-lg"
+                                 onerror="this.src='https://placehold.co/600x400/0c4a6e/ffffff?text=Echolocalisation+Cachalot'">
+                        </div>
+                        <div class="text-xs text-slate-400 flex items-center justify-between px-2">
+                            <span>Écholocalisation & Spectrogramme</span>
+                            <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1 font-medium">
+                                Source : NOAA Fisheries <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 : Hydrophone & Spectrogramme -->
+        <section id="mesure" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">4</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Comment les scientifiques entendent-ils les baleines ?</h2>
+            </div>
+
+            <div class="bg-ocean-900/60 border border-ocean-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+                <p class="text-slate-300 leading-relaxed mb-8">
+                    Les chercheurs utilisent un dispositif acoustique appelé <strong class="text-cyan-300">hydrophone</strong>, un capteur piézoélectrique sous-marin capable de transformer les variations de pression acoustique de l'eau en signal électrique.
+                </p>
+
+                <!-- Process Steps -->
+                <div class="grid md:grid-cols-3 gap-6 relative mb-10">
+                    <!-- Step 1 -->
+                    <div class="bg-ocean-950 p-6 rounded-xl border border-ocean-800 relative">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Étape 1</span>
+                        <h3 class="text-lg font-bold text-white mt-2 mb-2">Émission</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            La baleine contracte ses sacs aériens et émet une onde sonore mécanique qui voyage dans le milieu aquatique.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-ocean-950 p-6 rounded-xl border border-ocean-800 relative">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Étape 2</span>
+                        <h3 class="text-lg font-bold text-white mt-2 mb-2">Enregistrement</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            L'hydrophone capte la surpression acoustique dans l'eau et la convertit en tension électrique enregistrable.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-ocean-950 p-6 rounded-xl border border-ocean-800 relative">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Étape 3</span>
+                        <h3 class="text-lg font-bold text-white mt-2 mb-2">Analyse & Spectrogramme</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Les ordinateurs réalisent une analyse fréquentielle pour tracer un graphique 2D/3D appelé spectrogramme.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Explanation Box: Spectrogramme -->
+                <div class="bg-gradient-to-r from-ocean-950 via-ocean-900 to-ocean-950 p-6 rounded-xl border border-cyan-500/30">
+                    <h3 class="text-lg font-bold text-cyan-300 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-area"></i> Qu'est-ce qu'un Spectrogramme ?
+                    </h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        C'est la représentation visuelle du "paysage sonore". Il combine trois dimensions physiques :
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4 text-xs">
+                        <div class="bg-ocean-900/80 p-3 rounded-lg border border-ocean-700">
+                            <strong class="text-white block mb-1">Axe Horizontal (X) :</strong>
+                            <span class="text-slate-400">Le Temps en secondes ($s$)</span>
+                        </div>
+                        <div class="bg-ocean-900/80 p-3 rounded-lg border border-ocean-700">
+                            <strong class="text-white block mb-1">Axe Vertical (Y) :</strong>
+                            <span class="text-slate-400">La Fréquence en Hertz ($Hz$)</span>
+                        </div>
+                        <div class="bg-ocean-900/80 p-3 rounded-lg border border-ocean-700">
+                            <strong class="text-white block mb-1">Couleur / Luminosité :</strong>
+                            <span class="text-slate-400">L'Intensité / Amplitude de l'onde ($dB$)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5 : Pollution Sonore Humaine -->
+        <section id="impact" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center font-bold">5</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Impact du bruit humain sur la faune marine</h2>
+            </div>
+
+            <div class="bg-ocean-900/60 border border-ocean-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <p class="text-slate-300 leading-relaxed">
+                    Les activités industrielles mondiales (moteurs de navires cargo, sonars militaires, prospection sismique et pétrolière) injectent un bruit anthropique massif et permanent sous l'eau.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-red-950/20 border border-red-500/30 p-5 rounded-xl">
+                        <div class="text-red-400 text-2xl mb-2"><i class="fa-solid fa-volume-xmark"></i></div>
+                        <h3 class="font-bold text-white mb-2">1. Masquage Acoustique</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Le bruit ambiant des navires couvre les signaux des baleines, réduisant leur "espace de communication" de plus de 80% dans certaines zones à fort trafic.
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-950/20 border border-amber-500/30 p-5 rounded-xl">
+                        <div class="text-amber-400 text-2xl mb-2"><i class="fa-solid fa-route"></i></div>
+                        <h3 class="font-bold text-white mb-2">2. Perturbation du Comportement</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Changements brutaux de trajectoire, stress chronique, abandon des zones de reproduction ou arrêt soudain des vocalisations de chasse.
+                        </p>
+                    </div>
+
+                    <div class="bg-orange-950/20 border border-orange-500/30 p-5 rounded-xl">
+                        <div class="text-orange-400 text-2xl mb-2"><i class="fa-solid fa-ear-deaf"></i></div>
+                        <h3 class="font-bold text-white mb-2">3. Altération Auditive</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Les détonations ou sonars puissants sub-aquatiques peuvent causer des lésions irréversibles des organes auditifs ou provoquer des échouages de cétacés désorientés.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-ocean-950 rounded-xl border border-ocean-800 flex justify-between items-center text-xs text-slate-400">
+                    <span>Enjeu environnemental majeur suivi par la recherche internationale :</span>
+                    <a href="https://www.fisheries.noaa.gov/topic/ocean-acoustics" target="_blank" class="text-cyan-400 hover:underline">Source : NOAA Ocean Acoustics Program</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6 : Schémas & Synthèse -->
+        <section id="schemas" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">6</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Synthèse & Schémas conceptuels</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Schema 1 Box -->
+                <div class="bg-ocean-900/60 border border-ocean-800 p-6 rounded-2xl shadow-xl">
+                    <h3 class="font-bold text-lg text-cyan-300 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-arrows-split-up-and-left"></i> Schéma 1 : Le principe de l'Écholocalisation
+                    </h3>
+                    <div class="bg-ocean-950 p-6 rounded-xl border border-ocean-800 text-xs space-y-3 font-mono text-slate-300">
+                        <div class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-full bg-cyan-500 text-slate-950 font-bold flex items-center justify-center text-[10px]">A</span>
+                            <span>[Cachalot] ➔ Émission de clics à haute fréquence</span>
+                        </div>
+                        <div class="pl-9 text-cyan-400">
+                            ↓↓ Propagation du son ($v \approx 1\,500\text{ m/s}$)
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-full bg-yellow-500 text-slate-950 font-bold flex items-center justify-center text-[10px]">B</span>
+                            <span>[Proie / Calamar] ➔ Réflexion de l'onde mécanique</span>
+                        </div>
+                        <div class="pl-9 text-cyan-400">
+                            ↑↑ Retour de l'Écho vers l'organe d'écoute du cachalot
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-[10px]">C</span>
+                            <span>[Cerveau] ➔ Calcul du temps $t \Rightarrow d = \frac{v \cdot t}{2}$</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Box -->
+                <div class="bg-ocean-900/60 border border-ocean-800 p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-lg text-cyan-300 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-bookmark"></i> Résumé pour le Contrôle / Bac
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2.5 list-disc pl-4 leading-relaxed">
+                            <li><strong>Définition :</strong> Le son = onde mécanique progressive nécessitant un milieu matériel.</li>
+                            <li><strong>Vitesse dans l'eau :</strong> $1\,500\text{ m/s}$ (vs $340\text{ m/s}$ dans l'air, soit $\approx 4,4\times$ plus vite).</li>
+                            <li><strong>Fréquences baleines :</strong> $15\text{ Hz}$ à $5\,000\text{ Hz}$ (Infrasons et sons graves).</li>
+                            <li><strong>Outils :</strong> Hydrophone (enregistreur) + Spectrogramme (Temps, Fréquence, Amplitude).</li>
+                            <li><strong>Menace :</strong> Nuisances sonores anthropiques (masquage acoustique).</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-ocean-800 text-right">
+                        <span class="text-[11px] text-cyan-400 italic">Fiche conforme aux programmes de Physique-Chimie du Lycée</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7 : Sources Scientifiques Cliquables -->
+        <section id="sources" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">7</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Sources scientifiques fiables à citer</h2>
+            </div>
+
+            <div class="bg-ocean-900/80 border border-ocean-700 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                <p class="text-sm text-slate-300 mb-6">
+                    Cliquez sur les liens ci-dessous pour accéder directement aux publications d'organismes scientifiques de référence utilisés pour cette fiche :
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <!-- Source 1 -->
+                    <a href="https://www.noaa.gov" target="_blank" rel="noopener noreferrer" 
+                       class="p-4 bg-ocean-950 hover:bg-ocean-800/80 border border-ocean-800 hover:border-cyan-500/50 rounded-xl transition-all group flex items-start justify-between">
+                        <div>
+                            <h3 class="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                                NOAA — Pourquoi les baleines produisent-elles des sons ?
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Explications détaillées sur la communication, les clics et l'écholocalisation.
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-cyan-400 text-xs group-hover:translate-x-0.5 transition-transform mt-1"></i>
+                    </a>
+
+                    <!-- Source 2 -->
+                    <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" 
+                       class="p-4 bg-ocean-950 hover:bg-ocean-800/80 border border-ocean-800 hover:border-cyan-500/50 rounded-xl transition-all group flex items-start justify-between">
+                        <div>
+                            <h3 class="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                                NOAA Fisheries — Les sons des mammifères marins
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Banque d'enregistrements audio, spectrogrammes et caractéristiques fréquentielles.
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-cyan-400 text-xs group-hover:translate-x-0.5 transition-transform mt-1"></i>
+                    </a>
+
+                    <!-- Source 3 -->
+                    <a href="https://oceanexplorer.noaa.gov" target="_blank" rel="noopener noreferrer" 
+                       class="p-4 bg-ocean-950 hover:bg-ocean-800/80 border border-ocean-800 hover:border-cyan-500/50 rounded-xl transition-all group flex items-start justify-between">
+                        <div>
+                            <h3 class="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                                NOAA Ocean Exploration — Les hydrophones
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Technologies d'écoute acoustique sous-marine et capteurs piézoélectriques.
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-cyan-400 text-xs group-hover:translate-x-0.5 transition-transform mt-1"></i>
+                    </a>
+
+                    <!-- Source 4 -->
+                    <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" 
+                       class="p-4 bg-ocean-950 hover:bg-ocean-800/80 border border-ocean-800 hover:border-cyan-500/50 rounded-xl transition-all group flex items-start justify-between">
+                        <div>
+                            <h3 class="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                                Spektrum.de — Acoustique et Ondes
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Revue scientifique décrivant la mécanique des ondes et la communication animale.
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-cyan-400 text-xs group-hover:translate-x-0.5 transition-transform mt-1"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ocean-950 border-t border-ocean-800 py-8 mt-12 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-graduation-cap text-cyan-400 text-base"></i>
+                <span class="font-medium text-slate-300">Fiche de Révision Physique-Chimie — Niveau Lycée</span>
+            </div>
+            <p class="text-center sm:text-right">
+                Prête à être hébergée sur <span class="text-cyan-300 font-semibold">GitHub Pages</span> • Conçue pour révision et exposé
+            </p>
+        </div>
+    </footer>
+
 </body>
 </html>
