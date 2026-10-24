@@ -63,17 +63,11 @@
             background: linear-gradient(135deg, #031d33 0%, #075985 50%, #0284c7 100%);
         }
 
-        /* Cadre haute visibilité pour faire ressortir les images */
-        .image-frame {
-            background: #021526;
+        /* Cadre image pour tout afficher sans rogner */
+        .image-frame-full {
+            background: #010f1c;
             border: 1.5px solid #38bdf8;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
-            transition: all 0.3s ease-in-out;
-        }
-        .image-frame:hover {
-            border-color: #7dd3fc;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
-            transform: translateY(-2px);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
 
         /* Optimization pour l'impression A4 Paysage */
@@ -102,7 +96,7 @@
                 box-shadow: none !important;
                 backdrop-filter: none !important;
             }
-            .image-frame {
+            .image-frame-full {
                 border: 1px solid #0284c7 !important;
                 box-shadow: none !important;
                 background: #f8fafc !important;
@@ -201,47 +195,43 @@
 
                     <div class="bg-red-950/50 border-l-4 border-red-500 p-1.5 rounded-r-xl text-[9px] text-red-200">
                         <i class="fa-solid fa-circle-exclamation mr-1 text-red-400"></i>
-                        <strong>Propriété essentielle :</strong> Nécessite obligatoirement un milieu matériel (eau, air, solide). Il ne se propage <strong>pas dans le vide</strong>.
+                        <strong>Propriété essentielle :</strong> Nécessite un milieu matériel. Il ne se propage <strong>pas dans le vide</strong>.
                     </div>
 
                     <div class="space-y-1 text-[9px]">
                         <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <strong class="text-cyan-300">La Fréquence (f) :</strong> Mesurée en hertz (Hz), nombre de vibrations par seconde.
-                            <ul class="list-disc pl-3 mt-0.5 text-slate-300">
-                                <li>Fréquence faible = Son grave</li>
-                                <li>Fréquence élevée = Son aigu</li>
-                            </ul>
+                            <strong class="text-cyan-300">La Fréquence (f) :</strong> Mesurée en hertz (Hz), nombre de vibrations par seconde. (Grave vs Aigu).
                         </div>
 
                         <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <strong class="text-cyan-300">L'Amplitude :</strong> Liée à l'intensité de la vibration et au niveau sonore perçu en décibels (dB).
+                            <strong class="text-cyan-300">L'Amplitude :</strong> Liée à l'intensité de la vibration et au niveau sonore (dB).
                         </div>
 
                         <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
-                            <strong class="text-cyan-300">La Propagation :</strong> Vitesse dépendant de la température, de la pression et de la salinité.
+                            <strong class="text-cyan-300">La Propagation :</strong> Vitesse dépendant de la température, pression et salinité.
                         </div>
                     </div>
 
                     <!-- Source de la section 1 -->
                     <div class="pt-1 border-t border-ocean-800 text-[9px]">
-                        <span class="text-slate-400">Source scientifique :</span>
+                        <span class="text-slate-400">Source :</span>
                         <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline inline-flex items-center gap-0.5 ml-0.5">
-                            Spektrum.de — Les baleines : le son et les vibrations <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
+                            Spektrum.de — Le son et les vibrations <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- IMAGE 1 : Spektrum (Mise en valeur) -->
-                <div class="image-frame rounded-2xl p-1.5">
-                    <div class="overflow-hidden rounded-xl mb-1">
+                <!-- IMAGE 1 : Spektrum (AFFAICHÉE EN ENTIER) -->
+                <div class="image-frame-full rounded-2xl p-1.5 flex flex-col items-center">
+                    <div class="w-full h-24 flex items-center justify-center overflow-hidden rounded-xl bg-black/40">
                         <img src="https://images.openai.com/static-rsc-4/jzp7Gcrhyta4YjTuXLCU5XHy0w1Q9Gzl7dwMtsa2reSugEW_tqPTI2sl7uVatGpEJnizkXUZrsJqF3rv5wyl5lpoNS6Rva-M49-7LwYGGRYQyqzjVaOzWQsE1q0zvheEr0A-OoWFnzVbceV-PU4-a-EkDAumMHrSNnrPF2FySL7RZ7UAP62gR-4rHjHg5G4w?purpose=fullsize" 
                              alt="Propagation des ondes mécaniques dans l'océan" 
-                             class="w-full h-20 object-cover rounded-lg">
+                             class="max-w-full max-h-full object-contain rounded-lg">
                     </div>
-                    <div class="text-[9px] text-slate-200 flex items-center justify-between px-1 font-semibold">
-                        <span class="text-cyan-300">Propagation & Réflexion de l'onde</span>
-                        <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold flex items-center gap-0.5">
-                            Spektrum.de <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
+                    <div class="text-[8px] text-slate-200 flex items-center justify-between w-full mt-1 px-1 font-semibold">
+                        <span class="text-cyan-300">Propagation & Réflexion</span>
+                        <a href="https://www.spektrum.de" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold">
+                            Spektrum.de <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
                         </a>
                     </div>
                 </div>
@@ -266,19 +256,19 @@
                                 <i class="fa-solid fa-comments text-cyan-400"></i> 1. Communication
                             </h3>
                             <p class="text-slate-300 leading-tight">
-                                Chants complexes de la baleine à bosse (reproduction). Les sons graves se propagent sur de très grandes distances.
+                                Chants complexes de la baleine à bosse (reproduction). Diffusion sur très grandes distances.
                             </p>
                         </div>
 
                         <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60">
                             <h3 class="font-bold text-white text-[10px] flex items-center gap-1">
-                                <i class="fa-solid fa-radar text-yellow-400"></i> 2. Écholocalisation (Sonar Naturel)
+                                <i class="fa-solid fa-radar text-yellow-400"></i> 2. Écholocalisation (Sonar)
                             </h3>
                             <p class="text-slate-300 leading-tight">
-                                Le cachalot émet des clics sonores. L'onde rebondit sur une proie puis revient sous forme d'écho.
+                                Le cachalot émet des clics sonores. L'onde rebondit sur une proie puis revient en écho.
                             </p>
-                            <div class="p-1 bg-cyan-950/90 rounded-lg text-center font-mono text-cyan-300 text-[9px] border border-cyan-500/30 mt-1 font-bold">
-                                Calcul de la distance : d = (v × t) / 2
+                            <div class="p-0.5 bg-cyan-950/90 rounded text-center font-mono text-cyan-300 text-[8px] border border-cyan-500/30 mt-0.5 font-bold">
+                                Distance : d = (v × t) / 2
                             </div>
                         </div>
 
@@ -316,24 +306,24 @@
 
                     <!-- Source de la section 2 -->
                     <div class="pt-1 border-t border-ocean-800 text-[9px]">
-                        <span class="text-slate-400">Source scientifique :</span>
+                        <span class="text-slate-400">Source :</span>
                         <a href="https://www.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline inline-flex items-center gap-0.5 ml-0.5">
                             NOAA — Why do whales make sounds? <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- IMAGE 2 : NOAA Fisheries (Mise en valeur) -->
-                <div class="image-frame rounded-2xl p-1.5">
-                    <div class="overflow-hidden rounded-xl mb-1">
+                <!-- IMAGE 2 : NOAA Fisheries (AFFAICHÉE EN ENTIER) -->
+                <div class="image-frame-full rounded-2xl p-1.5 flex flex-col items-center">
+                    <div class="w-full h-24 flex items-center justify-center overflow-hidden rounded-xl bg-black/40">
                         <img src="https://images.openai.com/static-rsc-4/3pAgg9gx5dM6dD_sGTPbB6WMwaabb7HWbZRzQ7OTFg6An5wjW-KklmhuI30X0Y3-aXIksOrwAWEo-rlgU4OjPyBNcu_r7U3cgJLFcj8i7ScESD4vMa-M7z45P-yaJzUWkIG8fie5kKBiIy1X5xxTTAid8J33yhb_LS6nXGL68w3-GeGzDWDzh2LMAo3_dHl7?purpose=fullsize" 
                              alt="Écholocalisation et enregistrement des sons" 
-                             class="w-full h-20 object-cover rounded-lg">
+                             class="max-w-full max-h-full object-contain rounded-lg">
                     </div>
-                    <div class="text-[9px] text-slate-200 flex items-center justify-between px-1 font-semibold">
+                    <div class="text-[8px] text-slate-200 flex items-center justify-between w-full mt-1 px-1 font-semibold">
                         <span class="text-cyan-300">Écholocalisation & Vocalisations</span>
-                        <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold flex items-center gap-0.5">
-                            NOAA Fisheries <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
+                        <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold">
+                            NOAA Fisheries <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
                         </a>
                     </div>
                 </div>
@@ -353,26 +343,25 @@
                     </div>
 
                     <p class="text-slate-200 leading-tight text-[9px]">
-                        Les chercheurs utilisent un <strong class="text-cyan-300">hydrophone</strong> (capteur piézoélectrique sous-marin) transformant la pression acoustique en signal électrique.
+                        Les chercheurs utilisent un <strong class="text-cyan-300">hydrophone</strong> transformant la pression acoustique en signal électrique.
                     </p>
 
-                    <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60 text-[9px]">
-                        <strong class="text-white block font-bold border-b border-slate-700 pb-0.5 mb-0.5">Le Spectrogramme (Graphique du son) :</strong>
+                    <div class="p-1.5 bg-slate-900/70 rounded-xl border border-slate-700/60 text-[8px]">
+                        <strong class="text-white block font-bold border-b border-slate-700 pb-0.5 mb-0.5">Le Spectrogramme :</strong>
                         <ul class="space-y-0.5 text-slate-300">
-                            <li><strong class="text-cyan-300">Axe horizontal (X) :</strong> Temps en secondes (s)</li>
-                            <li><strong class="text-cyan-300">Axe vertical (Y) :</strong> Fréquence en hertz (Hz)</li>
-                            <li><strong class="text-cyan-300">Couleurs :</strong> Amplitude / Intensité du signal (dB)</li>
+                            <li><strong class="text-cyan-300">Axe X :</strong> Temps (s) | <strong class="text-cyan-300">Axe Y :</strong> Fréquence (Hz)</li>
+                            <li><strong class="text-cyan-300">Couleurs :</strong> Amplitude / Intensité (dB)</li>
                         </ul>
                     </div>
 
-                    <!-- IMAGE 3 : NOAA Sanctuaries 1 (Mise en valeur) -->
-                    <div class="image-frame rounded-2xl p-1.5">
-                        <div class="overflow-hidden rounded-xl">
+                    <!-- IMAGE 3 : NOAA Sanctuaries 1 (AFFICHER EN ENTIER) -->
+                    <div class="image-frame-full rounded-2xl p-1 flex flex-col items-center">
+                        <div class="w-full h-16 flex items-center justify-center overflow-hidden rounded-lg bg-black/40">
                             <img src="https://images.openai.com/static-rsc-4/XeG41ywZIWtL4Pt46bJfusMGzYLZ9GtfBWutqprIwSTJotvkLIdIuzpPREIiwrW1vfD-CPewcl5_ZOXCdss4o-M-6uUvV7kdakXUYdMiblDQP3lPWQKLBA029xbHDFly7_D5iOG4TolVryZ-TXmzqsR2Fsobq1nYLM1QhqrirDR77QPbySMz0HlxM_D87l6k?purpose=fullsize" 
                                  alt="Station d'écoute par hydrophone" 
-                                 class="w-full h-14 object-cover rounded-lg">
+                                 class="max-w-full max-h-full object-contain rounded">
                         </div>
-                        <div class="text-[8px] text-slate-200 flex items-center justify-between mt-1 px-1 font-semibold">
+                        <div class="text-[8px] text-slate-200 flex items-center justify-between w-full mt-0.5 px-0.5 font-semibold">
                             <span class="text-cyan-300">Capteurs hydroacoustiques</span>
                             <a href="https://sanctuaries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline font-bold">
                                 Sanctuaries NOAA <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
@@ -382,7 +371,6 @@
 
                     <!-- Sources de la section 3 -->
                     <div class="pt-0.5 border-t border-ocean-800 text-[8px] space-y-0.5">
-                        <span class="text-slate-400 block font-medium">Sources scientifiques :</span>
                         <a href="https://sanctuaries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline block">
                             • NOAA Sanctuaries — Ocean Acoustics <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
                         </a>
@@ -402,7 +390,7 @@
                     </div>
 
                     <p class="text-[9px] text-slate-200 leading-tight">
-                        Navires, sonars militaires et forages génèrent un bruit de fond sous-marin perturbant.
+                        Navires, sonars et forages génèrent un bruit perturbant la faune.
                     </p>
 
                     <div class="grid grid-cols-2 gap-1 text-[8px]">
@@ -416,12 +404,12 @@
                         </div>
                     </div>
 
-                    <!-- IMAGE 4 : NOAA Sanctuaries 2 (Mise en valeur) -->
-                    <div class="image-frame rounded-2xl p-1 mt-0.5">
-                        <div class="overflow-hidden rounded-xl">
+                    <!-- IMAGE 4 : NOAA Sanctuaries 2 (AFFICHER EN ENTIER) -->
+                    <div class="image-frame-full rounded-2xl p-1 mt-0.5 flex flex-col items-center">
+                        <div class="w-full h-14 flex items-center justify-center overflow-hidden rounded-lg bg-black/40">
                             <img src="https://images.openai.com/static-rsc-4/D1U7LqAzhza6-M57_3vdGGftMGpI0Rx5PPXvcwUBCtDcQPhUneF5lgh6o1a5OGps4SxKz_e7AhTEI-SPk_uCOJNfWCotcnoKlhm2qaKSu0M3iSkw7mVxsesiE0mcJvGY9r43j5Be8eFl1tUsei1HBPsXzi422h2AWwvOXjM10rfPHDgCLMh7U2w6i7Byf-OY?purpose=fullsize" 
                                  alt="Recherche sur le bruit anthropique" 
-                                 class="w-full h-12 object-cover rounded-lg">
+                                 class="max-w-full max-h-full object-contain rounded">
                         </div>
                     </div>
 
@@ -429,7 +417,7 @@
                     <div class="pt-0.5 border-t border-ocean-800 text-[8px]">
                         <span class="text-slate-400">Source :</span>
                         <a href="https://www.fisheries.noaa.gov" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline inline-flex items-center gap-0.5 ml-0.5">
-                            NOAA Fisheries — Understanding Sound in the Ocean <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
+                            NOAA Fisheries — Ocean Sound <i class="fa-solid fa-arrow-up-right-from-square text-[6px]"></i>
                         </a>
                     </div>
                 </div>
